@@ -19,7 +19,7 @@
         ,
         style="padding: 0; cursor: pointer"
       >
-        <img src="img/OnTime.PNG" alt="Logo" srcset="" />
+        <img src="static/img/OnTime.PNG" alt="Logo" srcset="" />
         <h2>OnTime</h2>
       </div>
       <div id="user">
@@ -39,7 +39,12 @@
       <form action="/add-group" method="POST">
         <div class="input-row">
           <label for="group_name">Group Code</label>
-          <input class="input-text" type="text" id="group_name" name="group_name" />
+          <input
+            class="input-text"
+            type="text"
+            id="group_name"
+            name="group_name"
+          />
         </div>
         <div class="buttons" style="justify-content: space-between">
           <button type="button" onclick="window.location.href='/create-group';">

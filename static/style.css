@@ -174,7 +174,7 @@ body {
   flex: 30%
 }
 
-#drop-area {
+.drop-area {
   margin: 1rem;
   padding: 2rem;
   background: #caf4ff;
@@ -207,7 +207,7 @@ body {
 #img-view img {
   width: 10rem;
 }
-#drop-area h2 {
+.drop-area h2 {
   padding: 0.5rem;
 }
 
