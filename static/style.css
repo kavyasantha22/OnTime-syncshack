@@ -43,10 +43,10 @@ body {
   text-align: right;
   font-size: 1.5rem;
 }
-#username {
-  flex-grow: 2;
-  text-align: right;
-  font-size: 1.5rem;
+
+#user{
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
@@ -89,8 +89,7 @@ body {
   height: 100%;
 }
 
-.container-task, 
-.container-leaderboard {
+.container-task{
   padding: 1rem;
 }
 
@@ -98,6 +97,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#buttons{
+  display: flex;
+  gap: 2rem;
 }
 
 .buttons{
@@ -145,9 +149,20 @@ body {
 .li-time,
 .li-task,
 .li-leaderboard{
-  font-size: 18px;
+  font-size: 1.5rem;
   padding: 1rem;
   border-bottom: 1px solid #ccc;
+}
+
+.li-leaderboard{
+  text-align: center;
+}
+
+.li-leader{
+  font-size: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 
 #li-group{
@@ -279,6 +294,11 @@ button[type="button"] {
 .feed-item h4{
   padding: 1rem 0;
   font-size: 1.5rem;
+}
+
+.feed-item h5{
+    padding-bottom: 10px;
+    font-style: italic;
 }
 
 .feed-item img {

@@ -3,208 +3,118 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>On Time</title>
-    <style>
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: Sans-Serif;
-      }
-
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        background-color: #f4f4f4;
-        font-family: Sans-Serif;
-      }
-
-      .topnav {
-        overflow: hidden;
-        background-color: #a0deff;
-        padding: 14px 16px;
-        text-align: left;
-        width: 100%;
-        box-sizing: border-box;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1;
-      }
-
-      .topnav h3 {
-        color: white;
-        margin: 0;
-      }
-
-      .main-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 60px;
-      }
-
-      .container-wrapper {
-        display: flex;
-        width: 100%;
-        height: 75vh;
-        box-sizing: border-box;
-      }
-
-      .left-container {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-
-      .right-container {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-
-      .container {
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        background-color: white;
-        overflow-y: auto;
-        height: 100%;
-      }
-
-      .left-container .container {
-        margin-bottom: 20px;
-      }
-
-      .button-left,
-      .button-right {
-        background-color: #5ab2ff;
-        margin-bottom: 15px;
-        font-family: Sans-Serif;
-        height: 30px;
-        width: 100px;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .button-left:hover,
-      .button-right:hover {
-        background-color: #4a9edc;
-      }
-
-      .ul {
-        list-style-type: none;
-        padding: 0;
-        font-family: sans-serif;
-      }
-
-      .li {
-        font-size: 25px;
-        padding: 8px;
-        border-bottom: 1px solid #ccc;
-        margin: 5px 0;
-        font-family: sans-serif;
-      }
-
-      .feed-item {
-        border-bottom: 1px solid #ccc;
-        padding: 10px 0;
-        margin-bottom: 10px;
-      }
-
-      .feed-item h4 {
-        margin: 5px 0;
-      }
-
-      .feed-item img {
-        width: 100%;
-        height: auto;
-        max-width: 600px;
-        margin-bottom: 10px;
-      }
-
-      .feed-buttons {
-        display: flex;
-        justify-content: space-between;
-        width: 150px;
-      }
-
-      .check,
-      .cross {
-        background-color: #a0deff;
-        padding: 10px 135px;
-        text-align: center;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-left: 10px;
-        margin-right: 10px;
-      }
-
-      .check:hover {
-        background-color: white;
-      }
-
-      .cross:hover {
-        background-color: white;
-      }
-    </style>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/OnTime.PNG" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="topnav">
-      <h3>OnTime</h3>
+      <div
+        class="topnav-logo"
+        onclick="location.href='/index'"
+        ,
+        style="padding: 0; cursor: pointer"
+      >
+        <img src="img/OnTime.PNG" alt="Logo" srcset="" />
+        <h2>OnTime</h2>
+      </div>
+      <div id="user">
+        <h3>Hi, Yeriel</h3>
+        <h3>Points: 1000</h3>
+      </div>
+      <h3
+        onclick="location.href='index.html'"
+        style="padding: 0; cursor: pointer"
+      >
+        <u>Log Out</u>
+      </h3>
     </div>
     <div class="main-content">
       <div class="container-wrapper">
         <div class="left-container">
           <h3>Leaderboard</h3>
-          <div class="container">
-            <ul class="ul">
-              <li class="li">1. User 1</li>
-              <li class="li">2. User 2</li>
-              <li class="li">3. User 3</li>
-              <li class="li">4. User 4</li>
-              <li class="li">5. User 5</li>
-              <li class="li">6. User 6</li>
-              <li class="li">7. User 7</li>
-              <li class="li">8. User 8</li>
+          <div class="container-leaderboard">
+            <ul class="ul-leaderboard">
+              <li class="li-leader" style="color: gold">
+                <i class="fas fa-medal"></i> User 1 : 1000 Points
+              </li>
+              <li class="li-leader" style="color: silver">
+                <i class="fas fa-medal"></i> User 2 : 1000 Points
+              </li>
+              <li class="li-leader" style="color: #ce8946">
+                <i class="fas fa-medal"></i> User 3 : 1000 Points
+              </li>
+              <li class="li-leaderboard">4. User 4 : 1000 Points</li>
+              <li class="li-leaderboard">5. User 5 : 1000 Points</li>
+              <li class="li-leaderboard">6. User 6 : 1000 Points</li>
+              <li class="li-leaderboard">7. User 7 : 1000 Points</li>
+              <li class="li-leaderboard">8. User 8 : 1000 Points</li>
+              <li class="li-leaderboard">9. User 9 : 1000 Points</li>
+              <li class="li-leaderboard">10. User 10 : 1000 Points</li>
             </ul>
           </div>
         </div>
         <div class="right-container">
           <h3>Feed</h3>
-          <div class="container">
+          <div class="container-feed">
             <div class="feed-item">
-              <h4>Username - Task</h4>
-              <img src="test.jpg" alt="Task image" />
+              <h4>Username</h4>
+              <h5>Task</h5>
+              <img src="task1.png" alt="Task image" />
               <div class="feed-buttons">
-                <button class="check">✓</button>
-                <button class="cross">X</button>
+                <button
+                  class="check"
+                  id="check-1"
+                  onclick="switchIt('cross-1')"
+                >
+                  ✓
+                </button>
+                <button
+                  class="cross"
+                  id="cross-1"
+                  onclick="switchIt('check-1')"
+                >
+                  X
+                </button>
               </div>
             </div>
             <div class="feed-item">
-              <h4>Username - Task</h4>
-              <img src="test.jpg" alt="Task image" />
+              <h4>Username</h4>
+              <h5>Task</h5>
+              <img src="task1.png" alt="Task image" />
               <div class="feed-buttons">
-                <button class="check">✓</button>
-                <button class="cross">X</button>
+                <button
+                  class="check"
+                  id="check-2"
+                  onclick="switchIt('cross-2')"
+                >
+                  ✓
+                </button>
+                <button
+                  class="cross"
+                  id="cross-2"
+                  onclick="switchIt('check-2')"
+                >
+                  X
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <footer></footer>
   </body>
+  <script>
+    function switchIt(id) {
+      document.getElementById(id).hidden = true;
+    }
+  </script>
 </html>
