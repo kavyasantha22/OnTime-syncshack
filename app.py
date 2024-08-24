@@ -49,19 +49,12 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    print(1)
-    """Show portfolio of stocks"""
     cursor = get_cursor()
-    groups = cursor.execute("SELECT * FROM groups WHERE person_id = ?", (session["user_id"],))
-    schedules = cursor.execute("SELECT * FROM schedules WHERE person_id = ?", (session["user_id"],))
     
+    # Fetch all data
+    groups = cursor.execute("SELECT * FROM groups WHERE person_id = ?", (session["user_id"],)).fetchall()
+    schedules = cursor.execute("SELECT * FROM schedules WHERE person_id = ?", (session["user_id"],)).fetchall()
     user = cursor.execute("SELECT * FROM users WHERE id = ?", (session["user_id"],)).fetchone()
-    return render_template("index.html", groups=groups, schedules=schedules, user = user)
-
-@app.route("/upload-photo", methods=["GET", "POST"])
-@login_required
-def upload_photo():
-    cursor = get_cursor()
     task = cursor.execute("""
             SELECT * FROM schedules 
             WHERE person_id = ? 
@@ -69,6 +62,9 @@ def upload_photo():
             ORDER BY task_time DESC 
             LIMIT 1
         """, (session["user_id"],)).fetchone()
+    
+    
+    # Handle task update
     if request.method == "POST":
         cursor.execute("""
             UPDATE schedules
@@ -78,7 +74,63 @@ def upload_photo():
         g.db.commit()
         return redirect("/")
     else:
-        return render_template("upload_photo.html", task=task)
+        print("#" * 30)
+        for schedule in schedules:
+            print(schedule["task_name"])
+        # for group in groups:
+        #     print()
+        return render_template("index.html", groups=groups, schedules=schedules, user = user, task = task)
+    
+@app.route("/join-group", methods = ["GET", "POST"])
+@login_required
+def join_group():
+    cursor = get_cursor()
+    
+    if request.method == "POST":
+        group_name = request.form.get("group_name")
+        
+        # Check if the group exists
+        rows = cursor.execute(
+            "SELECT * FROM groups WHERE group_name = ?", (group_name,)
+        ).fetchone()
+        
+        if rows is None:
+            return apology("Invalid group name", 403)
+        
+        # If the group exists, insert the user into the group
+        cursor.execute(
+            "INSERT INTO user_groups (group_id, person_id) VALUES (?, ?)",
+            (rows["group_id"], session["user_id"])
+        )
+        g.db.commit()
+        
+        return redirect("/")
+    else:
+        return render_template("join-group.html")
+        
+@app.route("/create-group", methods = ["GET", "POST"])
+@login_required
+def create_group():
+    cursor = get_cursor()
+    
+    if request.method == "POST":
+        
+        
+        group_name = request.form.get("group_name")
+        group_desc = request.form.get("group_desc")
+        
+        if not group_name:
+            return apology("must provide group name", 403)
+        
+        cursor.execute(
+            "INSERT INTO groups (person_id, group_name, group_description) VALUES (?, ?, ?)", (session["user_id"], group_name, group_desc)
+        )
+        g.db.commit()
+        
+        return redirect("/")
+    else:
+        return render_template("create-group.html")
+        
         
 @app.route("/group", methods = ["GET", "POST"])
 @login_required
@@ -174,7 +226,7 @@ def register():
         cursor.execute(
             "INSERT INTO users (username, hash) VALUES (?, ?)", (username, hash)
         )
-        g.db.commit(    )
+        g.db.commit()
         # Redirect user to home page
         return redirect("/")
 
