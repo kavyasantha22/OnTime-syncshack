@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On Time</title>
+    <style>
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: Sans-Serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: #f4f4f4;
+        font-family: Sans-Serif;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #a0deff;
+        padding: 14px 16px;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      .topnav h3 {
+        color: white;
+        margin: 0;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 60px;
+      }
+
+      .container-wrapper {
+        display: flex;
+        width: 100%;
+        height: 75vh;
+        box-sizing: border-box;
+      }
+
+      .left-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .right-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .container {
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        background-color: white;
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      .left-container .container {
+        margin-bottom: 20px;
+      }
+
+      .button-left,
+      .button-right {
+        background-color: #5ab2ff;
+        margin-bottom: 15px;
+        font-family: Sans-Serif;
+        height: 30px;
+        width: 100px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button-left:hover,
+      .button-right:hover {
+        background-color: #4a9edc;
+      }
+
+      .ul {
+        list-style-type: none;
+        padding: 0;
+        font-family: sans-serif;
+      }
+
+      .li {
+        font-size: 25px;
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+        margin: 5px 0;
+        font-family: sans-serif;
+      }
+
+      .feed-item {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+        margin-bottom: 10px;
+      }
+
+      .feed-item h4 {
+        margin: 5px 0;
+      }
+
+      .feed-item img {
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+        margin-bottom: 10px;
+      }
+
+      .feed-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 150px;
+      }
+
+      .check,
+      .cross {
+        background-color: #a0deff;
+        padding: 10px 135px;
+        text-align: center;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .check:hover {
+        background-color: white;
+      }
+
+      .cross:hover {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topnav">
+      <h3>OnTime</h3>
+    </div>
+    <div class="main-content">
+      <div class="container-wrapper">
+        <div class="left-container">
+          <h3>Leaderboard</h3>
+          <div class="container">
+            <ul class="ul">
+              <li class="li">1. User 1</li>
+              <li class="li">2. User 2</li>
+              <li class="li">3. User 3</li>
+              <li class="li">4. User 4</li>
+              <li class="li">5. User 5</li>
+              <li class="li">6. User 6</li>
+              <li class="li">7. User 7</li>
+              <li class="li">8. User 8</li>
+            </ul>
+          </div>
+        </div>
+        <div class="right-container">
+          <h3>Feed</h3>
+          <div class="container">
+            <div class="feed-item">
+              <h4>Username - Task</h4>
+              <img src="test.jpg" alt="Task image" />
+              <div class="feed-buttons">
+                <button class="check">✓</button>
+                <button class="cross">X</button>
+              </div>
+            </div>
+            <div class="feed-item">
+              <h4>Username - Task</h4>
+              <img src="test.jpg" alt="Task image" />
+              <div class="feed-buttons">
+                <button class="check">✓</button>
+                <button class="cross">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer></footer>
+  </body>
+</html>

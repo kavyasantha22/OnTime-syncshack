@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="shortcut icon" href="img/OnTimeRaw.PNG" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="topnav">
+      <div
+        class="topnav"
+        onclick="location.href='/'"
+        ,
+        style="padding: 0; cursor: pointer"
+      >
+        <img src="img/OnTime.PNG" alt="Logo" srcset="" />
+        <h2>OnTime</h2>
+      </div>
+      <h3 id="username">Hi, Yeriel</h3>
+      <h3>Points: 1000</h3>
+      <h3
+        onclick="location.href='/index'"
+        ,
+        style="padding: 0; cursor: pointer"
+      >
+        Log Out
+      </h3>
+    </div>
+    <div class="container">
+      <form action="/add-task", method = "post">
+        <div class="input-row">
+          <label for="task_name">Task</label>
+          <input type="text" id="task_name" name="task_name" />
+        </div>
+        <div class="input-row">
+          <label for="task_date">Date</label>
+          <input type="date" id="task_date" name="task_date" />
+        </div>
+        <div class="input-row">
+          <label for="task_time">Time</label>
+          <input type="time" id="task_time" name="task_time" value="12:00" />
+        </div>
+        <input type="submit" value="Submit" style="float: right" />
+      </form>
+    </div>
+  </body>
+  <script>
+    function toDateInputValue(dateObject) {
+      const local = new Date(dateObject);
+      local.setMinutes(
+        dateObject.getMinutes() - dateObject.getTimezoneOffset()
+      );
+      return local.toJSON().slice(0, 10);
+    }
+
+    document.getElementById("task_date").value = toDateInputValue(new Date());
+  </script>
+</html>
