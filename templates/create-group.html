@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Group</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link
+      rel="shortcut icon"
+      href="static/img/OnTime.PNG"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="topnav">
+      <div
+        class="topnav"
+        onclick="location.href='/'"
+        ,
+        style="padding: 0; cursor: pointer"
+      >
+        <img src="static/img/OnTime.PNG" alt="Logo" srcset="" />
+        <h2>OnTime</h2>
+      </div>
+      <h3 id="username">Hi, Yeriel</h3>
+      <h3>Points: 1000</h3>
+      <h3
+        onclick="location.href='/login'"
+        ,
+        style="padding: 0; cursor: pointer"
+      >
+        <u>Log Out</u>
+      </h3>
+    </div>
+    <div class="container">
+      <h3>Create Group</h3>
+      <form action="#">
+        <div class="input-row">
+          <label for="gn">Group Code</label>
+          <input class="input-text" type="text" id="gn" name="gn" />
+        </div>
+        <input type="submit" value="Submit" style="float: right" />
+      </form>
+    </div>
+  </body>
+</html>
