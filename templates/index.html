@@ -78,7 +78,7 @@
                 + Join Group
               </li>
               {% for group in groups%}
-              <li class="li-group" onclick="location.href='/group'">
+              <li id="li-group" onclick="location.href='/group'">
                 {{group["group_name"]}}
               </li>
               {% endfor %}
@@ -90,10 +90,11 @@
     <script>
       const initApp = () => {
         const droparea = document.querySelector(".drop-area");
+        const borders = document.getElementById("img-view");
 
-        const active = () => droparea.classList.add("green-border");
+        const active = () => (borders.style.border = "2px dashed gray");
 
-        const inactive = () => droparea.classList.remove("green-border");
+        const inactive = () => (borders.style.border = "2px dashed #5ab2ff");
 
         const prevents = (e) => e.preventDefault();
 
