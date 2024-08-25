@@ -82,7 +82,7 @@ def index():
 @login_required 
 def add_task():
     cursor = get_cursor()
-    
+    user = cursor.execute("SELECT * FROM users WHERE id = ?", (session["user_id"],)).fetchone()
     if request.method == "POST":
         task_name = request.form.get("task_name")
         date = request.form.get("task_date")        
@@ -104,14 +104,14 @@ def add_task():
         flash(f"Task '{task_name}' scheduled for {task_time_str}")
         return redirect("/")
     else:
-        return render_template("add-task.html")
+        return render_template("add-task.html", user=user)
     
     
 @app.route("/add-group", methods = ["GET", "POST"])
 @login_required
 def add_group():
     cursor = get_cursor()
-    
+    user = cursor.execute("SELECT * FROM users WHERE id = ?", (session["user_id"],)).fetchone()
     if request.method == "POST":
         
         group_name = request.form.get("group_name")
@@ -133,7 +133,7 @@ def add_group():
         
         return redirect("/add-group")
     else:
-        return render_template("add-group.html")
+        return render_template("add-group.html", user=user)
         
         
         
@@ -141,7 +141,7 @@ def add_group():
 @login_required
 def create_group():
     cursor = get_cursor()
-    
+    user = cursor.execute("SELECT * FROM users WHERE id = ?", (session["user_id"],)).fetchone()
     if request.method == "POST":
         group_name = request.form.get("group_name")
         group_desc = request.form.get("group_desc")
@@ -156,7 +156,7 @@ def create_group():
         
         return redirect("/")
     else:
-        return render_template("create-group.html")
+        return render_template("create-group.html", user = user)
         
         
         
@@ -164,7 +164,7 @@ def create_group():
 @login_required
 def group():
     cursor = get_cursor()
-    
+    user = cursor.execute("SELECT * FROM users WHERE id = ?", (session["user_id"],)).fetchone()
     # Fetch group details based on group_id
     # group = cursor.execute("SELECT * FROM groups WHERE group_name = ?", ("Study Group",)).fetchone()
     
@@ -177,7 +177,7 @@ def group():
     # if group is None:
     #     return apology("Group not found", 404)
     
-    return render_template(f"group.html")
+    return render_template(f"group.html", user=user)
 
 
 
@@ -187,7 +187,6 @@ def login():
     cursor = get_cursor()
     # Forget any user_id
     session.clear()
-
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         # Ensure username was submitted
