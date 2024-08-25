@@ -160,24 +160,24 @@ def create_group():
         
         
         
-@app.route("/group/<int:group_id>", methods=["GET", "POST"])
+@app.route("/group", methods=["GET", "POST"])
 @login_required
-def group(group_id):
+def group():
     cursor = get_cursor()
     
     # Fetch group details based on group_id
-    group = cursor.execute("SELECT * FROM groups WHERE group_id = ?", (group_id,)).fetchone()
+    # group = cursor.execute("SELECT * FROM groups WHERE group_name = ?", ("Study Group",)).fetchone()
     
-    people = cursor.execute("""
-        SELECT users.* FROM users
-        JOIN user_groups ON users.id = user_groups.user_id
-        WHERE user_groups.group_id = ?
-        """, (group_id,)).fetchall()
+    # people = cursor.execute("""
+    #     SELECT users.* FROM users
+    #     JOIN groups ON users.id = groups.user_id
+    #     WHERE groups.group_name = ?
+    #     """, ("Study Group",)).fetchall()
     
-    if group is None:
-        return apology("Group not found", 404)
+    # if group is None:
+    #     return apology("Group not found", 404)
     
-    return render_template(f"group{group_id}.html", group=group, people = people)
+    return render_template(f"group.html")
 
 
 

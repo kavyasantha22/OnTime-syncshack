@@ -14,7 +14,7 @@
   <body>
     <div class="topnav">
       <div
-        class="topnav"
+        class="topnav-logo"
         onclick="location.href='/'"
         ,
         style="padding: 0; cursor: pointer"
@@ -22,8 +22,10 @@
         <img src="static/img/OnTime.PNG" alt="Logo" srcset="" />
         <h2>OnTime</h2>
       </div>
-      <h3 id="username">Hi, Yeriel</h3>
-      <h3>Points: 1000</h3>
+      <div id="user">
+        <h3>Hi, {{user["username"]}}</h3>
+        <h3>Aura: {{user["scores"]}}</h3>
+      </div>
       <h3
         onclick="location.href='/login'"
         ,
@@ -35,7 +37,7 @@
     <div class="main-content">
       <div class="container-wrapper">
         <div class="left-container">
-          <div id="drop-area">
+          <div class="drop-area">
             <h2>{{ task["task_name"] }} {{ task["task_time"] }}</h2>
             <label for="input-file" id="file-input">
               <input type="file" accept="image/*" id="input-file" hidden />
@@ -76,7 +78,7 @@
                 + Join Group
               </li>
               {% for group in groups%}
-              <li class="li-group" onclick="location.href='/group'">
+              <li id="li-group" onclick="location.href='/group'">
                 {{group["group_name"]}}
               </li>
               {% endfor %}
@@ -85,5 +87,41 @@
         </div>
       </div>
     </div>
+    <script>
+      const initApp = () => {
+        const droparea = document.querySelector(".drop-area");
+        const borders = document.getElementById("img-view");
+
+        const active = () => (borders.style.border = "2px dashed gray");
+
+        const inactive = () => (borders.style.border = "2px dashed #5ab2ff");
+
+        const prevents = (e) => e.preventDefault();
+
+        ["dragenter", "dragover", "dragleave", "drop"].forEach((evtName) => {
+          droparea.addEventListener(evtName, prevents);
+        });
+
+        ["dragenter", "dragover"].forEach((evtName) => {
+          droparea.addEventListener(evtName, active);
+        });
+
+        ["dragleave", "drop"].forEach((evtName) => {
+          droparea.addEventListener(evtName, inactive);
+        });
+
+        droparea.addEventListener("drop", handleDrop);
+      };
+
+      document.addEventListener("DOMContentLoaded", initApp);
+
+      const handleDrop = (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        const fileArray = [...files];
+        console.log(files); // FileList
+        console.log(fileArray);
+      };
+    </script>
   </body>
 </html>
